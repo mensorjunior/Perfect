@@ -1,0 +1,115 @@
+<template>
+    <div>
+        <p>Componente menssagem</p>
+        <form   class="contato-form">
+
+            <div class="input-container">
+                <label for="Nome">Digite seu nome:</label>
+                <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome"/>
+            </div>
+
+            <div class="input-container">
+                    <label for="Contato">Digite um número para contato</label>
+                    <input type="text" id="contato" name="contato" v-model="contato" placeholder="Digite o seu telefone"/>
+            </div>
+
+            <div id="opcionais-container" class="input-container">
+                <label for="Mensagem">Escreva uma menssagem:</label>
+                <input type="text" id="mensagem" name="mensagem" v-model="mensagem" placeholder="Digite uma mensagem"/>
+            </div >
+            <div class="input-container">
+                <label id="opcionais-title" for="opcionais">Selecione a melhor forma para entrarmos em contato:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" name="whatsapp" v-model="whatsapp" value="whatsapp">
+                    <span> WhatsApp</span>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" name="ligacao" v-model="ligacao" value="ligacao">
+                    <span> Ligação</span>
+                </div>
+            </div>    
+
+            <div class="input-container">
+                <input type="submit" class="submit-btn" value="Enviar solicitação de contato!">
+            </div>
+        </form>
+    </div>
+</template>
+
+<script>
+
+export default {
+    name: "ContatoForm"
+    // I M P O R T A N T E !
+    //PRECISO COLOCAR NO CAMPO MENSAGEM, UM CONTADOR DE CARACTERES, E ESTILIZAR O TAMANHO DA CAIXA DE MENSAGEM.
+    //PRECISO ESTILIZAR O CHECBOX PARA A LABEL FICAR MAIS ACEITAVEL.
+}
+</script>
+
+<style scoped>
+.contato-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.input-container {
+display: flex;
+flex-direction: column;
+margin-bottom: 20px;
+}
+
+label{
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #222;
+    padding: 5px 10px;
+    border-left: 4px solid #222;
+}
+
+input {
+    padding: 5px 10px;
+    width: 400px
+}
+
+#opcionais-container{
+    flex-direction: row;
+    flex-wrap: wrap;  
+}
+
+#opcionais-title {
+    width: 100%;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.checkbox-container span,
+.checkbox-container input {
+    width: auto;
+}
+
+.checkbox-container span {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.submit-btn {
+    background-color: #222;
+    color: azure;
+    font-weight: bold;
+    border: 2px solid #222;
+    padding: 10px;
+    font-size: 16px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.submit-btn:hover {
+    background-color: transparent;
+    color: #222;
+}
+</style>

@@ -1,30 +1,52 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <NavbarMenu :logo="logo_src" :alt="app_name"/>
+  </div>
+  <div> 
+    <router-view/>
+  </div>
+  <div> 
+    <FooterMenu/>
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import NavbarMenu from './components/NavbarMenu.vue'
+import FooterMenu from './components/FooterMenu.vue'
 
-nav {
-  padding: 30px;
+export default{
+  components: {
+    NavbarMenu,
+    FooterMenu,
+  },
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  data(){
+    return {
+      logo_src: "img/icons/Logo.png",
+      app_name: "Entre em contato conosco."
     }
   }
 }
+</script> 
+
+<style>
+*{
+  font-family: Helvetica;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+    margin: 50px;
+    min-height: 250px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 30px;
+    color: #222;
+}
 </style>
+ 

@@ -39,11 +39,25 @@
 <script>
 
 export default {
-    name: "ContatoForm"
-    // I M P O R T A N T E !
-    //PRECISO COLOCAR NO CAMPO MENSAGEM, UM CONTADOR DE CARACTERES, E ESTILIZAR O TAMANHO DA CAIXA DE MENSAGEM.
-    //PRECISO ESTILIZAR O CHECBOX PARA A LABEL FICAR MAIS ACEITAVEL.
+   
+    name: "ContatoForm",
+    
+    Data() {
+        return {
+            nome: null,
+            contato: null,
+            mensagem:null,
+            whatsapp: false,
+            ligacao:false
+        }
+    },
+    methods: {
+        async getContact() {
+
+        }
+    }
 }
+
 </script>
 
 <style scoped>

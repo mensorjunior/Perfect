@@ -15,11 +15,11 @@ import NavbarMenu from './components/NavbarMenu.vue'
 import FooterMenu from './components/FooterMenu.vue'
 
 export default{
-  created() {
-    this.$axios.post('ContatoForm.json', {
-      nome: 'teste'
-    }).then(res => console.log(res))
-  },
+  // created() {
+  //   this.$axios.post('ContatoForm.json', {
+  //     nome: 'teste'
+  //   }).then(res => console.log(res))
+  // },
   components: {
     NavbarMenu,
     FooterMenu,

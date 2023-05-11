@@ -5,32 +5,32 @@
 
             <div class="input-container">
                 <label for="Nome">Digite seu nome:</label>
-                <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome"/>
+                <input type="text" id="nome" name="nome" v-model="ContatoForm.nome" placeholder="Digite o seu nome"/>
             </div>
 
             <div class="input-container">
                     <label for="Contato">Digite um número para contato</label>
-                    <input type="text" id="contato" name="contato" v-model="contato" placeholder="Digite o seu telefone"/>
+                    <input type="text" id="contato" name="contato" v-model="ContatoForm.contato" placeholder="Digite o seu telefone"/>
             </div>
 
             <div id="opcionais-container" class="input-container">
                 <label for="Mensagem">Escreva uma menssagem:</label>
-                <input type="text" id="mensagem" name="mensagem" v-model="mensagem" placeholder="Digite uma mensagem"/>
+                <input type="text" id="mensagem" name="mensagem" v-model="ContatoForm.mensagem" placeholder="Digite uma mensagem"/>
             </div >
             <div class="input-container">
                 <label id="opcionais-title" for="opcionais">Selecione a melhor forma para entrarmos em contato:</label>
                 <div class="checkbox-container">
-                    <input type="checkbox" name="whatsapp" v-model="whatsapp" value="whatsapp">
+                    <input type="checkbox" name="whatsapp" v-model="ContatoForm.whatsapp" value="whatsapp">
                     <span> WhatsApp</span>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" name="ligacao" v-model="ligacao" value="ligacao">
+                    <input type="checkbox" name="ligacao" v-model="ContatoForm.ligacao" value="ligacao">
                     <span> Ligação</span>
                 </div>
             </div>    
 
             <div class="input-container">
-                <input type="submit" class="submit-btn" value="Enviar solicitação de contato!">
+                <input @click="getContact" type="submit" class="submit-btn" value="Enviar solicitação de contato!">
             </div>
         </form>
     </div>
@@ -42,18 +42,20 @@ export default {
    
     name: "ContatoForm",
     
-    Data() {
+    data() {
         return {
-            nome: null,
-            contato: null,
-            mensagem:null,
-            whatsapp: false,
-            ligacao:false
+            ContatoForm: {
+                nome: '',
+                contato: '',
+                mensagem:'',
+                whatsapp: false,
+                ligacao:false
+            }   
         }
     },
     methods: {
         async getContact() {
-
+            this.$axios.post('ContatoForm.json', this.ContatoForm)
         }
     }
 }

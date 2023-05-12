@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <p>Componente menssagem</p>
+    <!-- layout para desktop -->
+    <div :class="[isMobile ? 'mobile' : 'desktop']">
+        <h2 class="titulo-formulario">Deixe-nos saber como podemos ajudar</h2>
         <form   class="contato-form">
 
             <div class="input-container">
@@ -50,30 +51,45 @@ export default {
                 mensagem:'',
                 whatsapp: false,
                 ligacao:false
-            }   
+            },
+            isDesktop: false,
+            isMobile:false
         }
+    },
+    created(){
+        this.detectScreen();
     },
     methods: {
         async getContact() {
             this.$axios.post('ContatoForm.json', this.ContatoForm)
+        },
+
+        detectScreen() {
+            if(screen.width < 640 || screen.height < 480 ) {
+                this.isMobile = true;
+            } else {
+                this.isDesktop = true;
+            }
         }
-    }
+    },
+
+
 }
 
 </script>
 
-<style scoped>
-.contato-form {
+<style>
+.desktop .contato-form {
     max-width: 400px;
     margin: 0 auto;
 }
-.input-container {
+.desktop .input-container {
 display: flex;
 flex-direction: column;
 margin-bottom: 20px;
 }
 
-label{
+.desktop label{
     font-weight: bold;
     margin-bottom: 15px;
     color: #222;
@@ -81,38 +97,40 @@ label{
     border-left: 4px solid #222;
 }
 
-input {
+.desktop input {
     padding: 5px 10px;
     width: 400px
 }
 
-#opcionais-container{
+.desktop #opcionais-container{
     flex-direction: row;
     flex-wrap: wrap;  
 }
 
-#opcionais-title {
+.desktop #opcionais-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
     width: 100%;
 }
 
-.checkbox-container {
+.desktop .checkbox-container {
     display: flex;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 20px;
 }
 
-.checkbox-container span,
-.checkbox-container input {
+.desktop .checkbox-container span,
+.desktop .checkbox-container input {
     width: auto;
 }
 
-.checkbox-container span {
+.desktop .checkbox-container span {
     margin-left: 10px;
     font-weight: bold;
 }
 
-.submit-btn {
+.desktop .submit-btn {
     background-color: #222;
     color: azure;
     font-weight: bold;
@@ -124,8 +142,85 @@ input {
     transition: .5s;
 }
 
-.submit-btn:hover {
+.desktop .submit-btn:hover {
     background-color: transparent;
     color: #222;
 }
+
+.desktop .titulo-formulario {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Style para mobile */
+
+.mobile .contato-form {
+  max-width: 100%;
+  margin: 0 auto;
+}
+.mobile .input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.mobile label {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #222;
+  padding: 5px 10px;
+  border-left: 4px solid #222;
+}
+.mobile input {
+  padding: 5px 10px;
+  width: 100%;
+}
+.mobile #opcionais-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.mobile #opcionais-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+.mobile .checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mobile .submit-btn {
+    background-color: #222;
+    color: azure;
+    font-weight: bold;
+    border: 2px solid #222;
+    padding: 10px;
+    font-size: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: .5s;
+}
+.mobile .checkbox-container span,
+.mobile  .checkbox-container input {
+width: auto;
+padding-left: 1rem;
+}
+
+.mobile .submit-btn:hover {
+    background-color: transparent;
+    color: #222;
+}
+
+.mobile .titulo-formulario {
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+}
+
 </style>

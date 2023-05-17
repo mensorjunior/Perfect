@@ -2,7 +2,7 @@
   <BannerMenu/>
   <div class="main-container">
     <h1>HOME</h1>
-    <CarouselComponent/>
+    <CaroselBo/>
     <ContatoForm/>
   </div>
 </template>
@@ -12,14 +12,14 @@ import BannerMenu from "../components/BannerMenu.vue"
 
 import ContatoForm from "../components/ContatoForm.vue"
 
-import CarouselComponent from "../components/CarouselComponent.vue"
+import CaroselBo from "@/components/CaroselBo.vue"
 
 export default {
   name: "Home-Menu",
   components: {
     BannerMenu,
-    CarouselComponent,
     ContatoForm,
+    CaroselBo
   }
 }
 </script>
